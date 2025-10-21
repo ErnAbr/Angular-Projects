@@ -4,7 +4,7 @@
   >
     <h1 class="text-2xl font-black">This Is My ToDoApp in Angular</h1>
     <form>
-      <text-input (inputText)="onTextEntered($event)" />
+      <text-input [(value)]="todo" />
       <div class="m-5">
         <app-button buttonName="Save List" type="submit" (click)="onClick()" />
         <app-button [isRed]="false" buttonName="delete" />

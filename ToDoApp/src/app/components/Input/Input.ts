@@ -1,16 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, model } from '@angular/core';
 
 @Component({
   selector: 'text-input',
   templateUrl: './input.html',
-  imports: [FormsModule],
+  imports: [],
 })
-export class Input {
-  @Output() inputText = new EventEmitter<string>();
+export class InputValue {
+  value = model<string>('');
 
   onInput(event: Event) {
-    const value = (event.target as HTMLInputElement).value;
-    this.inputText.emit(value);
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.value.set(inputValue);
   }
 }
