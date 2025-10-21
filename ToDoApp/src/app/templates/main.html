@@ -6,8 +6,8 @@
     <form>
       <text-input [(value)]="todo" />
       <div class="m-5">
-        <app-button buttonName="Save List" type="submit" (click)="onClick()" />
-        <app-button [isRed]="false" buttonName="delete" />
+        <app-button buttonName="Save To Do" type="button" (click)="onClick()" />
+        <app-button buttonName="Delete" [isRed]="false" />
       </div>
     </form>
   </div>

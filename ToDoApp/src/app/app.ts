@@ -12,12 +12,12 @@ export class App {
   todo = '';
   toDoList: string[] = [];
 
-  onTextEntered(value: string) {
-    this.todo = value;
-  }
-
   onClick() {
+    if (/^\s*$/.test(this.todo)) {
+      console.warn('Cannot be empty');
+      return;
+    }
     console.log(this.todo);
-    this.todo = "";
+    this.todo = '';
   }
 }

@@ -9,7 +9,6 @@ export class InputValue {
   value = model<string>('');
 
   onInput(event: Event) {
-    const inputValue = (event.target as HTMLInputElement).value;
-    this.value.set(inputValue);
+    this.value.set((event.target as HTMLInputElement).value);
   }
 }
