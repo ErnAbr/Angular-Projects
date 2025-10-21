@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class Button {
   @Input() isRed = true;
+  @Input() buttonName = '';
 
   getButtonStyles() {
     if (this.isRed == true) {
