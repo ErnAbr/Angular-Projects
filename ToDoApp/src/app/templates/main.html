@@ -3,10 +3,12 @@
     class="flex mt-3 p-3 w-1/2 justify-center place-self-center border-3 rounded-2xl border-black-500 flex-col items-center"
   >
     <h1 class="text-2xl font-black">This Is My ToDoApp in Angular</h1>
-    <text-input (inputEmiter)="getDataFromChild($event)" />
-    <div class="m-5">
-      <app-button buttonName="Save List" type="submit" (click)="onSubmit()" />
-      <app-button [isRed]="false" buttonName="delete" />
-    </div>
+    <form>
+      <text-input (inputText)="onTextEntered($event)" />
+      <div class="m-5">
+        <app-button buttonName="Save List" type="submit" />
+        <app-button [isRed]="false" buttonName="delete" />
+      </div>
+    </form>
   </div>
 </section>

@@ -1,3 +1,2 @@
 <label for="text-input">Enter a ToDo</label>
-<input id="text-input" type="text" [(ngModel)]="inputValue" />
-
+<input id="text-input" type="text" (input)="onInput($event)" />

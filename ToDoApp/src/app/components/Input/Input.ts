@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,11 +7,10 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
 })
 export class Input {
-  inputValue = '';
+  @Output() inputText = new EventEmitter<string>();
 
-  readonly inputEmiter = output<string>();
-
-  getInputValue() {
-    this.inputEmiter.emit(this.inputValue);
+  onInput(event: Event) {
+    const value = (event.target as HTMLInputElement).value;
+    this.inputText.emit(value);
   }
 }
