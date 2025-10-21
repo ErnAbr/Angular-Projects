@@ -9,10 +9,15 @@ import { Input } from './components/Input/Input';
   standalone: true,
 })
 export class App {
+  todo = '';
   toDoList: string[] = [];
 
   onTextEntered(value: string) {
-    console.log(value);
+    this.todo = value;
+    // console.log(value);
+  }
+
+  onClick() {
+    console.log(this.todo);
   }
 }
-

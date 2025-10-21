@@ -6,7 +6,7 @@
     <form>
       <text-input (inputText)="onTextEntered($event)" />
       <div class="m-5">
-        <app-button buttonName="Save List" type="submit" />
+        <app-button buttonName="Save List" type="submit" (click)="onClick()" />
         <app-button [isRed]="false" buttonName="delete" />
       </div>
     </form>
