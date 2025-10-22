@@ -4,10 +4,10 @@
   >
     <h1 class="text-2xl font-black">This Is My ToDoApp in Angular</h1>
     <form>
-      <text-input [(value)]="todo" />
+      <div class="mt-3"><text-input [(value)]="todo" /></div>
       <div class="m-5">
         <app-button buttonName="Save To Do" type="button" (click)="onClick()" />
-        <app-button buttonName="Delete" [isRed]="false" />
+        <app-button buttonName="Clear" [isRed]="false" (click)="onClickClear()" />
       </div>
     </form>
   </div>

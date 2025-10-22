@@ -20,4 +20,8 @@ export class App {
     console.log(this.todo);
     this.todo = '';
   }
+
+  onClickClear() {
+    this.todo = '';
+  }
 }
