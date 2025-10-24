@@ -1,7 +1,23 @@
-@for (todo of toDoList; track $index) {
 <div>
-  {{ todo }}
+  <ul class="max-w-md space-y-1 list-none list-inside">
+    @for (todo of toDoList; track $index) {
+
+    <div class="flex justify-center items-center">
+      <li
+        class="w-25 text-center mr-3"
+        [ngClass]="this.isCompleted[$index] == true ? 'line-through' : ''"
+      >
+        {{ todo }}
+      </li>
+      <app-button
+        buttonName="{{ this.isCompleted[$index] == true ? 'UnDo' : 'Completed' }}"
+        (click)="completeTask($index)"
+      />
+      <app-button buttonName="Delete" [isRed]="false" (click)="deleteItem($index)" />
+    </div>
+
+    } @empty {
+    <div class="self-center"><span>Congratulations, All Tasks Are Completed</span></div>
+    }
+  </ul>
 </div>
-} @empty {
-<div>Congratulations, All Tasks Are Completed</div>
-}
