@@ -1,13 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'list-view',
   templateUrl: './listView.html',
+  imports: [],
 })
-export class ListView implements OnChanges {
+export class ListView {
   @Input() toDoList: string[] = [];
-
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['toDoList']);
-  }
 }

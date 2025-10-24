@@ -1,3 +1,7 @@
+@for (todo of toDoList; track $index) {
 <div>
-  {{ toDoList[6] }}
+  {{ todo }}
 </div>
+} @empty {
+<div>Congratulations, All Tasks Are Completed</div>
+}
