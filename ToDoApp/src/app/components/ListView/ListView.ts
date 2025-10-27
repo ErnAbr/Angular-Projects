@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Button } from '../Button/Button';
 import { NgClass } from '@angular/common';
+import { LocalStorageService } from '../../services/LocalStorageService';
 
 @Component({
   selector: 'list-view',
@@ -8,11 +9,17 @@ import { NgClass } from '@angular/common';
   imports: [Button, NgClass],
 })
 export class ListView {
+  private readonly localStorageService = inject(LocalStorageService);
+
   @Input() toDoList: string[] = [];
-  isCompleted: boolean[] = [];
+  @Input() isCompleted: boolean[] = [];
 
   deleteItem(index: number) {
     this.toDoList.splice(index, 1);
+    this.isCompleted.splice(index, 1);
+
+    this.localStorageService.set('todoKey', this.toDoList);
+    this.localStorageService.set('isCompletedKey', this.isCompleted);
   }
 
   completeTask(index: number) {
@@ -21,7 +28,7 @@ export class ListView {
     } else {
       this.isCompleted[index] = true;
     }
+
+    this.localStorageService.set('isCompletedKey', this.isCompleted);
   }
 }
-
-//line-through
