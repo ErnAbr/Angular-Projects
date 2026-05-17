@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Nav } from '../layout/nav/nav';
-import { EntryForm } from "../features/entry-form/entry-form";
+import { EntryForm } from '../features/entry-form/entry-form';
+import { AccountService } from '../core/services/account-service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,9 @@ import { EntryForm } from "../features/entry-form/entry-form";
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('client');
+export class App implements OnInit {
+  private accountService = inject(AccountService);
+  ngOnInit(): void {
+    this.accountService.setUser();
+  }
 }
