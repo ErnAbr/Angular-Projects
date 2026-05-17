@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, inject } from '@angular/core';
 import { EntryData } from '../../types/EntryData';
-import { LocalStorageService } from '../../core/services/local-storage-service';
+import { AccountService } from '../../core/services/account-service';
 
 @Component({
   selector: 'app-entry-form',
@@ -13,7 +13,7 @@ export class EntryForm {
   protected submitted = false;
   protected loginForm: FormGroup;
   private fb = inject(FormBuilder);
-  private localStorage = inject(LocalStorageService);
+  private accountService = inject(AccountService);
 
   constructor() {
     this.loginForm = this.fb.group({
@@ -34,7 +34,7 @@ export class EntryForm {
     if (this.loginForm.invalid) return;
 
     const data: EntryData = this.loginForm.value;
-    this.localStorage.set('user', data.clientName);
+    this.accountService.setUser(data.clientName);
     this.loginForm.reset();
   }
 }

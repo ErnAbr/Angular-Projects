@@ -1,18 +1,23 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { LocalStorageService } from './local-storage-service';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  curentUser = signal<string | null>(null);
-  private localStorageService = inject(LocalStorageService);
+  currentUser = signal<string | null>(null);
 
-  setUser() {
-    const user = this.localStorageService.get<string>('user');
+  setUser(username: string) {
+    localStorage.setItem('user', username);
+    this.currentUser.set(username);
+  }
 
-    if (user) {
-      this.curentUser.set(user);
-    }
+  loadUser() {
+    const user = localStorage.getItem('user');
+    if (user) this.currentUser.set(user);
+  }
+
+  clearUser() {
+    localStorage.removeItem('user');
+    this.currentUser.set(null);
   }
 }

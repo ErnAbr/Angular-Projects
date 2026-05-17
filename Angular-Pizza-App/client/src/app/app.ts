@@ -10,8 +10,9 @@ import { AccountService } from '../core/services/account-service';
   styleUrl: './app.css',
 })
 export class App implements OnInit {
-  private accountService = inject(AccountService);
+  protected accountService = inject(AccountService);
+
   ngOnInit(): void {
-    this.accountService.setUser();
+    this.accountService.loadUser();
   }
 }
