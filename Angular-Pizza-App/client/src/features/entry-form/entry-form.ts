@@ -2,6 +2,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Component, inject } from '@angular/core';
 import { EntryData } from '../../types/EntryData';
 import { AccountService } from '../../core/services/account-service';
+import { Router } from '@angular/router';
+import { routeLinks } from '../../app/routes';
 
 @Component({
   selector: 'app-entry-form',
@@ -14,6 +16,7 @@ export class EntryForm {
   protected loginForm: FormGroup;
   private fb = inject(FormBuilder);
   private accountService = inject(AccountService);
+  private router = inject(Router);
 
   constructor() {
     this.loginForm = this.fb.group({
@@ -35,6 +38,7 @@ export class EntryForm {
 
     const data: EntryData = this.loginForm.value;
     this.accountService.setUser(data.clientName);
+    this.router.navigate([routeLinks.orders]);
     this.loginForm.reset();
   }
 }

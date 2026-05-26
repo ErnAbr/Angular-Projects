@@ -8,8 +8,14 @@
     <!-- Desktop Menu (Centered) -->
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a>Order Pizza</a></li>
-        <li><a>My Order History</a></li>
+        <li>
+          <a [routerLink]="routerLinks.orders" routerLinkActive="text-primary">Order Pizza</a>
+        </li>
+        <li>
+          <a [routerLink]="routerLinks['order-history']" routerLinkActive="text-primary"
+            >My Order History</a
+          >
+        </li>
       </ul>
     </div>
 
@@ -42,8 +48,14 @@
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li><a>Order Pizza</a></li>
-          <li><a>My Order History</a></li>
+          <li>
+            <a [routerLink]="routerLinks.orders" routerLinkActive="text-primary">Order Pizza</a>
+          </li>
+          <li>
+            <a [routerLink]="routerLinks['order-history']" routerLinkActive="text-primary"
+              >My Order History</a
+            >
+          </li>
           <li>
             <a class="btn btn-primary btn-sm mt-2" (click)="accountService.clearUser()">Log Out</a>
           </li>
